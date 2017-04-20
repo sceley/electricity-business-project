@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>详情页</title>
+	<link rel="stylesheet" href="../css/main.css">
+	<link rel="stylesheet" href="../css/detail.css">
+	<script src="../js/sea.js"></script>
+	<script>
+		seajs.use('http://localhost:3000/js/main');
+	</script>
+</head>
+<body id="backTop">
+	<div class="header">
+		<div class="logo">
+			<img src="../images/logo.png" alt="">
+		</div>
+		<div class="tutor">
+			<div class="t_1001">
+				<strong>0571-8502312</strong>
+				<span>
+					<img src="../images/top_img1.png" alt="">
+					服务热线：
+				</span>
+			</div>
+			<div class="t_1002">
+				<ul class="li_container">
+					<li class="li_tu">
+						肥羊租机
+					</li>
+					<li class="li_tu">
+						产品
+					</li>
+					<li class="li_tu">
+						新闻
+					</li>
+					<li class="li_tu">
+						租机流程
+					</li>
+					<li class="li_tu">
+						<a href="/admin/land">管理员登陆</a>
+					</li>
+					<li class="li_tu">
+						<a id="show_LR" href="javascript:;">登陆/注册</a>
+					</li>
+					<li class="li_tu">
+						联系我们
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div id="container">
+		<div id="container-center">
+			<div class="container-l">
+				<div class="img-container" id="photo_1">
+					<div class="img-container-children" id="photo_2">
+						<img src="images/detail-1.jpg" Index="1" id="photo1">
+						<img src="images/detail-2.jpg" Index="2" id="photo2">
+						<img src="images/detail-3.jpg" Index="3" id="photo3">
+						<img src="images/detail-4.jpg" Index="4" id="photo4">
+						<img src="images/detail-5.jpg" Index="5" id="photo5">
+						<a href="javascript:;" id="prev" class="arrow">&lt;</a>
+						<a href="javascript:;" id="next" class="arrow">&gt;</a>
+					</div>
+				</div>
+				<div id="circle-container">
+					<div id="circle-container-first">
+						<div class="circle"></div>
+						<div class="circle"></div>
+						<div class="circle"></div>
+						<div class="circle"></div>
+						<div class="circle"></div>
+					</div>
+				</div>
+			</div>
+			<div class="container-r">
+				<p class="ip">iphone7</p>
+				<div class="shoujia">官网售价：￥5388</div>
+				<form action="">
+					<div id="color" class="color">
+						<p>颜色：</p>
+						<div>
+							<label for="">土豪金</label>
+							<input type="radio" value="土豪金" name="color" checked="checked">
+						</div>
+						<div class="distance">
+							<label for="">玫瑰金</label>
+							<input type="radio" value="玫瑰金" name="color">
+						</div>
+						<div class="distance">
+							<label for="">银色</label>
+							<input type="radio" value="银色" name="color">
+						</div>
+						<div class="distance">
+							<label for="">亮黑</label>
+							<input type="radio" value="亮黑" name="color">
+						</div>
+					</div>
+					<div class="version">
+						<p>版本：</p>
+						<div>
+							<label for="">全网通</label>
+							<input type="radio" value="全网通" checked>
+						</div>
+					</div>
+					<div class="store">
+						<p>内存：</p>
+						<div>
+							<label for="">32G</label>
+							<input type="radio" value="32G" name="capacity" checked>
+						</div>
+						<div class="distance">
+							<label for="">128G</label>
+							<input type="radio" value="128G" name="capacity">
+						</div>
+						<div class="distance">
+							<label for="">256G</label>
+							<input type="radio" value="256G" name="capacity">
+						</div>
+					</div>
+					<div class="experience">
+						<p>体验时间：</p>
+						<select name="time" id="">
+							<option value="六个月" checked>六个月</option>
+							<option value="七个月">七个月</option>
+							<option value="八个月">八个月</option>
+						</select>
+					</div>
+					<div class="pay">
+						<p class="pay-1">首付租金：￥369</p>
+						<p class="pay-2">(月租￥249+保障服务费￥120)</p>
+						<input class="send" type="button" value="立即预约">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- 第三大部分 -->
+	<div id="third">
+		<div class="third-a">
+			<div class="third-a-1">
+				<div class="third-a-1-l" id="p1">
+					<p>商品详情</p>
+				</div>
+				<div class="third-a-1-r" id="p2">
+					<p>累计评价</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 第四大部分 -->
+	<div id="fourth" style="display: none;">
+		<div class="fourth-a">
+			<div class="fourth-a-l">
+				<div class="fourth-word1">1</div>
+				<div class="fourth-word2">
+					<p class="word-100">初步使用了一天,手机还不错。没有大黄屏也没有电流声炭黑色很漂亮。Home反馈也很好
+						习惯了就好像是实体键的赶脚发热也还好。拍照还真不错,不过没有Plus辣么给力。忠实果粉
+						支持国产。从iphone3GS到7没有断过一部机。</p>
+					</div>
+				</div>
+				<div class="fourth-a-r">
+					<div class="detail-100">
+						<p>网络类型：无需合约版</p>
+						<p>机身颜色：黑色</p>
+						<p>储存容量：32G</p>
+					</div>
+					<div class="name">
+						<p>匿名</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 第五大部分 -->
+	<div id="detail_1">
+		<div id="fifth">
+			<div class="fifth-a">
+				<img src="images/detail1.jpg" alt="">
+			</div>
+		</div>
+	</div>
+
+	<div id="LR" class="landregister" style="display: none;">
+		<div class="land_header">
+			<img src="../images/register.jpg" alt="">
+			<img id="cancel" class="cancel" src="../images/menu_img2.png" alt="">
+			<div class="l_r_c">
+				<div id="land" class="l">登陆</div>
+				<div id="register" class="r">注册</div>
+			</div>
+		</div>
+		<div id="land_content" class="content_l_r">
+			<div class="input_body">
+				<label>用户名:</label>
+				<input name="userName" type="text" placeholder="请输入用户名">
+			</div>
+			<div class="input_body">
+				<label class="distance" for="">密码:</label>
+				<input name="password" type="password" placeholder="请输入密码">
+			</div>
+			<div class="input_body">
+				<a href="javascript:;">忘记密码</a>
+			</div>
+			<div class="submit">
+				<input type="button" value="提交">
+			</div>
+		</div>
+		<div id="register_content" class="content_l_r" style="display: none;">
+			<div class="input_body">
+				<label for="">用户名:</label>
+				<input name="userName" type="text" placeholder="请输入用户名">
+			</div>
+			<div class="input_body">
+				<label class="distance" for="">密码:</label>
+				<input name="password" type="password" placeholder="请输入密码">
+			</div>
+			<div class="input_body">
+				<label for="">手机号:</label>
+				<input name="mobileNumber" type="text" placeholder="请输入手机号">
+			</div>
+			<div class="submit">
+				<input type="button" value="提交">
+			</div>
+		</div>
+	</div>
+
+	<div class="landregister" style="display: none;">
+		<div class="land_header">
+			<img src="../images/register.jpg" alt="">
+			<img class="cancel" src="../images/menu_img2.png" alt="">
+			<div class="l_r_c">
+				完善信息
+			</div>
+		</div>
+		<div class="content_l_r">
+			<div class="input_body">
+				<label for="">姓名:</label>
+				<input name="name" type="text" placeholder="填写姓名">
+			</div>
+			<div class="input_body">
+				<label for="">院校:</label>
+				<input name="college" type="text" placeholder="所属院校">
+			</div>
+			<div class="input_body">
+				<label for="">专业:</label>
+				<input name="profession" type="text" placeholder="所属专业">
+			</div>
+			<div class="input_body">
+				<label for="">寝室:</label>
+				<input name="Bedroom" type="text" placeholder="寝室地址">
+			</div>
+			<div class="submit">
+				<input type="button" value="提交">
+			</div>
+		</div>
+	</div>
+	<div class="backTop"> 
+		<a href="#backTop"><img src="../images/down_img8.png" alt=""></a>
+	</div>
+</body>
+</html>

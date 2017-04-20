@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>个人中心</title>
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/center.css">
+
+</head>
+<body id="backTop">
+    <script>
+    	window.onload = function  () {
+    		var userPhoto = document.getElementById("userPhoto");
+    		console.log(userPhoto.offsetWidth);
+    		userPhoto.style.height = userPhoto.offsetWidth + "px";
+    	};
+    </script>
+	<div class="header">
+		<div class="header_row1">
+			<img id="userPhoto" class="userPhoto" src="../images/bg-1.jpg" alt="">
+			<input id="upload" type="file">
+			<div class="userName">hongyuqi</div>
+		</div>
+		<div class="header_row2">
+			<ul>
+				<a href="#leaseProduct"><li class="least_menus">租赁产品</li></a>
+				<a href="#bill"><li class="least_menus">我的账单</li></a>
+				<a href="#comment"><li class="least_menus">评论</li></a>
+			</ul>
+		</div>
+	</div>
+	<div id="leaseProduct" class="leaseProduct">租赁产品</div>
+	<!-- 租赁部分 -->
+	<div class="lease">
+		<ul>
+			<li class="lease_row">产品：<span>iphone7</span></li>
+			<li class="lease_row">规格：<span>国行/亮黑/128G</span></li>
+			<li class="lease_row">租金：<span>249元/月</span></li>
+			<li class="lease_row">意外保障：<span>198元</span></li>
+		</ul>
+	</div>
+	<div id="bill" class="bill">我的账单</div>
+	<!-- 订单部分 -->
+	<div class="order">
+		<div class="order_1">&lt;</div>
+		<div class="order_c">
+			<div class="bill_1">
+				<ul>
+					<li>帐期：<span>1/6</span></li>
+					<li>应付金额：<span>249</span></li>
+					<li>优惠减免：<span>0.00</span></li>
+					<li>实际付款：<span>0.00</span></li>
+				</ul>
+			</div>
+			<div class="bill_2">
+				<ul>
+					<li>状态：<span>已支付</span></li>
+					<li>应付款时间：<span>2016/11/11</span></li>
+					<li>逾期滞纳金：<span>0.00</span></li>
+					<li>付款时间：<span>2016/11/11</span></li>
+				</ul>
+			</div>
+		</div>
+		<div class="order_r">&gt;</div>
+	</div>
+	<div class="circle">
+		<div class="circle_container">
+			<span class="every_circle"></span>
+		</div>
+	</div>
+	<div id="comment" class="comment">评论</div>
+	<div class="comment_content">
+		<textarea name="" id="">请输入商品评论......</textarea>
+		<input type="submit" value="提交">
+	</div>
+	<div class="backTop"> 
+		<a href="#backTop"><img src="../images/down_img8.png" alt=""></a>
+	</div>
+	<div class="navbar navbar-default navbar-fixed-bottom">
+		<div class="container">
+			<button class="btn btn-primary pull-right">登出</button>
+		</div>
+	</div>
+</body>
+</html>
