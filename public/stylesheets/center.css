@@ -1,0 +1,176 @@
+*{
+	padding: 0px;
+	margin: 0px;
+}
+body{
+	background: #000;
+	color: white;
+	font-family: arial, verdana;
+}
+ul{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+	color: white;
+}
+.header{
+	width: 22%;
+	margin: 0 auto;
+	margin-top: 20px;
+	text-align: center;
+}
+.header_row1{
+	width: 40%;
+	margin: 0 auto;
+	overflow: hidden;
+	text-align: center;
+}
+.header_row1 input{
+	background: green;
+	margin-top: 10px;
+}
+.userPhoto{
+	max-width: 100%;
+	border-radius: 100%;
+}
+.userName{
+	text-align: center;
+	font-size: 2em;
+	margin-top: 10px;
+}
+.header_row2{
+	margin-top: 20px;
+}
+.header_row2:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.least_menus{
+	float: left;
+	width: 33.333%;
+	text-align: center;
+}
+.leaseProduct, .bill, .comment{
+	width: 15%;
+	line-height: 50px;
+	margin: 0 auto;
+	margin-top: 100px;
+	text-align: center;
+	background: #202020;
+	border-radius: 2px;
+	font-size: 1.2em;
+}
+.bill, .comment{
+	margin-top: 50px;
+}
+.lease{
+	width: 40%;
+	margin: 0 auto;
+}
+.lease_row{
+	border: 2px solid #343436;
+	line-height: 50px;
+	text-align: center;
+	margin-top: 20px;
+	font-size: 1.2em;
+}
+.order{
+	width: 80%;
+	margin: 0 auto;
+}
+.order:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.order_1, .order_c, .order_r{
+	float: left;
+}
+.order_1, .order_r{
+	width: 10%;
+	text-align: center;
+	font-size: 4em;
+	line-height: 300px;
+	cursor: pointer;
+}
+.order_c{
+	width: 80%;
+}
+.bill_1, .bill_2{
+	width: 48%;
+	float: left;
+}
+.bill_2{
+	margin-left: 4%;
+}
+.order_c li{
+	border: 2px solid #343436;
+	line-height: 50px;
+	text-align: center;
+	margin-top: 20px;
+	font-size: 1.2em;
+}
+.circle{
+	text-align: center;
+	margin-top: 30px;
+}
+.circle_container{
+	display: inline-block;
+	margin-left: 15px;
+}
+.circle_container:first-child{
+	margin-left: 0px;
+}
+.every_circle{
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background: white;
+	display: block;
+}
+.comment_content{
+	width: 60%;
+	margin: 0 auto;
+}
+.comment_content input, 
+.comment_content textarea{
+	display: block;
+}
+.comment_content textarea{
+	margin-top: 50px;
+	height: 200px;
+	color: white;
+	text-align: center;
+	background: #000;
+	border: 2px solid white;
+	border-radius: 100px;
+	font-size: 1.5em;
+	width: 100%;
+}
+.comment_content input{
+	width: 20%;
+	height: 50px;
+	border: 1px solid white;
+	background: green;
+	border-radius: 50px;
+	font-size: 1.3em;
+	color: white;
+	margin: 0 auto;
+	margin-top: 40px;
+	margin-bottom: 50px;
+	cursor: pointer;
+}
+.backTop{
+	background: #000;
+}
+.backTop:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.backTop img{
+	float: right;
+	margin-right: 10px;
+}

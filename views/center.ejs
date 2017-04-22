@@ -5,22 +5,43 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>个人中心</title>
 	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../css/center.css">
-
+	<link rel="stylesheet" href="../stylesheets/center.css">
+	<script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js">
+	</script>
 </head>
 <body id="backTop">
     <script>
     	window.onload = function  () {
     		var userPhoto = document.getElementById("userPhoto");
-    		console.log(userPhoto.offsetWidth);
     		userPhoto.style.height = userPhoto.offsetWidth + "px";
     	};
     </script>
+    <script>
+    	$(document).ready(() => {
+    		$("#upload").on("change", function  () {
+    			var file = this.files[0];
+    			var data = new FormData();
+    			data.append("file", file);
+    			console.log(data);
+    			var XHR = new XMLHttpRequest();
+    			XHR.open("POST", "/upload", true);
+    			XHR.send(data);
+    			XHR.onload = function  () {
+    				if(this.status == 200){
+    					console.log('成功');
+    				}
+    				else{
+    					console.log('失败');
+    				}
+    			};
+    		});
+    	});
+    </script>
 	<div class="header">
 		<div class="header_row1">
-			<img id="userPhoto" class="userPhoto" src="../images/bg-1.jpg" alt="">
+			<img id="userPhoto" class="userPhoto" src="../client_img/<%=  imgsrc %>.png" alt="">
 			<input id="upload" type="file">
-			<div class="userName">hongyuqi</div>
+			<div class="userName"> <%= username %> </div>
 		</div>
 		<div class="header_row2">
 			<ul>
@@ -79,7 +100,8 @@
 	</div>
 	<div class="navbar navbar-default navbar-fixed-bottom">
 		<div class="container">
-			<button class="btn btn-primary pull-right">登出</button>
+			<a href="/" class="btn btn-primary">首页</a>
+			<a href="/signout" class="btn btn-primary pull-right">登出</a>
 		</div>
 	</div>
 </body>

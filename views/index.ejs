@@ -4,11 +4,13 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>详情页</title>
-	<link rel="stylesheet" href="../css/main.css">
-	<link rel="stylesheet" href="../css/detail.css">
-	<script src="../js/sea.js"></script>
+	<link rel="stylesheet" href="../stylesheets/main.css">
+	<link rel="stylesheet" href="../stylesheets/detail.css">
+	<script src="../javascripts/sea.js"></script>
 	<script>
-		seajs.use('http://localhost:3000/js/main');
+		seajs.use('http://localhost:3000/javascripts/main');
+	</script>
+	<script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js">
 	</script>
 </head>
 <body id="backTop">
@@ -23,6 +25,7 @@
 					<img src="../images/top_img1.png" alt="">
 					服务热线：
 				</span>
+				<strong> 欢迎 <%= username %> </strong>
 			</div>
 			<div class="t_1002">
 				<ul class="li_container">
@@ -36,13 +39,22 @@
 						新闻
 					</li>
 					<li class="li_tu">
-						租机流程
+						<% if (username) { %>
+							<a href="/center">个人中心</a>
+						<% } else { %>
+							飞机
+						<% } %>
 					</li>
 					<li class="li_tu">
-						<a href="/admin/land">管理员登陆</a>
+						<a href="/adminl">管理员登陆</a>
 					</li>
 					<li class="li_tu">
-						<a id="show_LR" href="javascript:;">登陆/注册</a>
+						<% if (username) { %>
+							<a id="show_LR" href="/signout">退出</a>
+						<% } else { %>
+							<a id="show_LR" href="javascript:;">登陆/注册</a>
+						<% } %>
+						
 					</li>
 					<li class="li_tu">
 						联系我们
@@ -183,7 +195,7 @@
 		</div>
 	</div>
 
-	<div id="LR" class="landregister" style="display: none;">
+	<div id="LR" class="landregister" style="display: none; z-index: 800">
 		<div class="land_header">
 			<img src="../images/register.jpg" alt="">
 			<img id="cancel" class="cancel" src="../images/menu_img2.png" alt="">
@@ -195,38 +207,92 @@
 		<div id="land_content" class="content_l_r">
 			<div class="input_body">
 				<label>用户名:</label>
-				<input name="userName" type="text" placeholder="请输入用户名">
+				<input id="username_land" name="userName" type="text" placeholder="请输入用户名">
 			</div>
 			<div class="input_body">
 				<label class="distance" for="">密码:</label>
-				<input name="password" type="password" placeholder="请输入密码">
+				<input id="password_land" name="password" type="password" placeholder="请输入密码">
 			</div>
 			<div class="input_body">
 				<a href="javascript:;">忘记密码</a>
 			</div>
 			<div class="submit">
-				<input type="button" value="提交">
+				<input id="land_btn" type="button" value="提交">
 			</div>
 		</div>
+		<script>
+			$(document).ready(() => {
+				$("#land_btn").on("click", () => {
+					var data = {
+						username: $("#username_land").val(),
+						password: $("#password_land").val()
+					};
+					$.ajax({
+						url: '/signin',
+						type: "POST",
+						data: JSON.stringify(data),
+						contentType: "application/json",
+						success: (res, status) => {
+							if(status == "success")
+							{
+								alert(res);
+								$("#user_name").html(res.split(",")[0]);
+								location.href = "/";
+							}
+							else
+							{
+								alert("登陆失败");
+							}
+						}
+					});
+				});
+			});
+		</script>
 		<div id="register_content" class="content_l_r" style="display: none;">
 			<div class="input_body">
 				<label for="">用户名:</label>
-				<input name="userName" type="text" placeholder="请输入用户名">
+				<input id="username_re" name="userName" type="text" placeholder="请输入用户名">
 			</div>
 			<div class="input_body">
 				<label class="distance" for="">密码:</label>
-				<input name="password" type="password" placeholder="请输入密码">
+				<input id="password_re" name="password" type="password" placeholder="请输入密码">
 			</div>
 			<div class="input_body">
 				<label for="">手机号:</label>
-				<input name="mobileNumber" type="text" placeholder="请输入手机号">
+				<input id="phone_re" name="mobileNumber" type="text" placeholder="请输入手机号">
 			</div>
 			<div class="submit">
-				<input type="button" value="提交">
+				<input id="btn_re" type="button" value="提交">
 			</div>
 		</div>
 	</div>
-
+	<script>
+		$(document).ready(() => {
+			$("#btn_re").on("click", () => {
+				var data = {
+					username: $("#username_re").val(),
+					password: $("#password_re").val(),
+					phonenumber: $("#phone_re").val()
+				};
+				$.ajax({
+					url: '/signup',
+					type: "POST",
+					data: JSON.stringify(data),
+					contentType: "application/json",
+					success: (res, status) => {
+						if(status == "success")
+						{
+							alert(res);
+						}
+						else
+						{
+							alert("注册失败");
+						}
+					}
+				});
+			});
+		});
+	</script>
 	<div class="landregister" style="display: none;">
 		<div class="land_header">
 			<img src="../images/register.jpg" alt="">

@@ -1,0 +1,45 @@
+*{
+	padding: 0px;
+	margin: 0px;
+}
+body{
+	background-color: #000;
+}
+a{
+	text-decoration: none;
+}
+.admini{
+	margin-top: 20px;
+	color: #5BC0DE;
+	text-align: center;
+	font-size: 2em;
+}
+.container{
+	width: 40%;
+	margin: 0 auto;
+	margin-top: 100px;
+	background: #DDDDDD;
+	text-align: center;
+}
+.client{
+	text-align: center;
+	padding: 10px 0px;
+	font-size: 1.5em;
+	color: #428BCA;
+}
+.content{
+	height: 350px;
+	background: #5CB85C;
+	overflow-y: auto;
+}
+.download{
+	display: inline-block;
+	padding: 0px 30px;
+	line-height: 40px;
+	text-align: center;
+	background: #428BCA;
+	color: white;
+	font-size: 1.5em;
+	margin: 10px 0px;
+	border-radius: 40px;
+}

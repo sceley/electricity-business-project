@@ -1,0 +1,183 @@
+*{
+	padding: 0px;
+	margin: 0px;
+}
+body {
+    font-family: arial, verdana;
+}
+a{
+	color: white;
+	text-decoration: none;
+}
+.header{
+	min-width: 1200px;
+	position: fixed;
+	z-index: 800;
+	top: 0px;
+	left: 0px;
+	height: 111px;
+	width: 100%;
+	background: #000000;
+}
+.logo{
+	width: 330px;
+	height: 111px;
+	line-height: 111px;
+	text-align: center;
+	float: left;
+	background: #000;
+}
+.logo img{
+	vertical-align: middle;
+}
+.tutor{
+	margin-left: 330px;
+	height: 111px;
+	background: #000;
+	border-left: 1px solid #333;
+}
+.t_1001{
+	height: 47px;
+	width: 100%;
+	border-bottom: 1px solid #333;
+	line-height: 47px;
+	color: white;
+}
+.t_1001 strong, 
+.t_1001 span{
+	float: right;
+}
+.t_1001 strong{
+	font-size: 24px;
+	font-style: italic;
+	color: #fff;
+	font-weight: bold;
+	margin-right: 30px;
+}
+.t_1001 span{
+	font-size: 12px;
+	color: #a5a5a5;
+}
+.t_1001 span img{
+	vertical-align: middle;
+}
+.t_1002{
+	width: 100%;
+	height: 63px;
+}
+.li_container{
+	list-style: none;
+}
+.li_tu{
+	width: calc(100% / 7);
+	float: left;
+	color: #fff;
+	font-size: 14px;
+	box-sizing: border-box;
+	height: 63px;
+	line-height: 63px;
+	text-align: center;
+	border-right: 1px solid #333;
+}
+.li_tu:last-child{
+	border: none;
+}
+.landregister{
+	position: fixed;
+	top: 200px;
+	width: 30%;
+	overflow: hidden;
+	left: calc((100% - 30%) / 2);
+	background: white;
+}
+.land_header{
+	position: relative;
+}
+.cancel{
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	background: #5E5E5E;
+	cursor: pointer;
+	opacity: 0.2;
+}
+.l_r_c{
+	position: absolute;
+	width: 100px;
+	bottom: 4px;
+	left: calc((100% - 100px) / 2);
+	background: #000;
+	color: white;
+	font-size: 20px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+}
+.l_r_c .l,
+.l_r_c .r{
+	float: left;
+	width: 50%;
+	text-align: center;
+	cursor: pointer;
+}
+.l_r_c .l{
+	background: white;
+	color: black;
+}
+.cancel:hover{
+	opacity: 0.8;
+}
+.content_l_r{
+	background: white;
+}
+.content_l_r input{
+	width: 70%;
+	height: 38px;
+	border-radius: 20px;
+	background: #DDDDDD;
+	border: 1px solid #CCC;
+	text-indent: 1em;
+}
+.input_body{
+	margin-top: 20px;
+	text-align: center;
+	color: #666666;
+}
+.input_body a{
+	color: #666666;
+	text-decoration: none;
+	font-size: 20px;
+	font-weight: 500;
+}
+.submit{
+	text-align: center;
+	cursor: pointer;
+}
+.submit input, .send{
+	width: 50%;
+	border-radius: 20px;
+	margin: 20px 0px;
+	background: green;
+	font-size: 20px;
+	color: white;
+	cursor: pointer;
+}
+.send{
+	height: 50px;
+	border-radius: 60px;
+}
+img{
+	max-width: 100%;
+}
+.backTop{
+	background: #000;
+}
+.backTop:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.backTop img{
+	float: right;
+	margin-right: 10px;
+}
