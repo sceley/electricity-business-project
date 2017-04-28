@@ -5,8 +5,14 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>管理员登录</title>
 	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js">
-	</script>
+	<style>
+		body{
+			background: black;
+		}
+		.navbar-footer-style{
+			background: black;
+		}
+	</style>
 </head>
 <body>
 	<div style="margin-top:200px" class="container">
@@ -15,7 +21,7 @@
 				<div class="panel panel-primary">
 					<div class="panel-heading">欢迎管理员</div>
 					<div class="panel-body">
-						<form class="form-horizontal" style="padding:30px">
+						<form role="form" method="post" action="#" class="form-horizontal" style="padding:30px">
 							<div class="form-group">
 								<div class="input-group">
 									<div class="input-group-addon">用户名:</div>
@@ -37,26 +43,32 @@
 			</div>
 		</div>
 	</div>
+	<div class="navbar navbar-footer-style navbar-default navbar-fixed-bottom">
+		<div class="container">
+			<a href="/" class="btn btn-primary">首页</a>
+		</div>
+	</div>
 	<script>
-		$(document).ready(() => {
-			$("#btn").on("click", () => {
-				var data = {
-					username: $("#username").val(),
-					password: $("#password").val()
-				};
-				$.ajax({
-					url: "/admin",
-					type: "POST",
-					data: JSON.stringify(data),
-					contentType: "application/json",
-					success: (res, status) => {
-						if(status == "success"){
-							alert(res);
-						}
-					}
-				});
-			});
-		});
+		document.getElementById("btn").onclick = function  () {
+			var username = document.getElementById("username").value;
+			var password = document.getElementById("password").value;
+			var data = {
+				username: username,
+				password: password
+			};
+			var XHR = new XMLHttpRequest();
+			XHR.open("POST", "adminin");
+			XHR.setRequestHeader("Content-Type", "application/json");
+			XHR.send(JSON.stringify(data));
+			XHR.onload = function  () {
+				if(this.status == 304){
+					location.href = location.href;
+				}
+				else{
+					alert(this.response);
+				}
+			};
+		};
 	</script>
 </body>
 </html>

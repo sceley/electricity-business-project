@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>完善信息</title>
+	<link rel="stylesheet" href="../stylesheets/main.css">
+	<link rel="stylesheet" href="../stylesheets/detail.css">
+	<script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js">
+	</script>
+	<style>
+		body{
+			background: black;
+		}
+	</style>
+</head>
+<body>
+	<div id="perfect" class="landregister">
+		<form id="perfectForm">
+			<div class="land_header">
+				<img src="../images/register.jpg" alt="">
+				<div class="l_r_c">
+					完善信息
+				</div>
+			</div>
+			<div class="content_l_r">
+				<div class="input_body">
+					<label for="">姓名:</label>
+					<input name="username" type="text" placeholder="填写姓名">
+				</div>
+				<div class="input_body">
+					<label for="">院校:</label>
+					<input name="college" type="text" placeholder="所属院校">
+				</div>
+				<div class="input_body">
+					<label for="">专业:</label>
+					<input name="major" type="text" placeholder="所属专业">
+				</div>
+				<div class="input_body">
+					<label for="">寝室:</label>
+					<input name="dormitory" type="text" placeholder="寝室地址">
+				</div>
+				<div class="submit">
+					<input id="send_perfect" type="button" value="提交">
+				</div>
+			</div>
+		</form>
+	</div>
+	<script>
+		$(document).ready(() => {
+			$("#send_perfect").on("click", () => {
+				var data = new FormData($("#perfectForm")[0]);
+				$.ajax({
+					url: "/perfect",
+					type: "POST",
+					processData: false,
+					contentType: false,
+					data: data,
+					success: (res, status) => {
+						if(status == "success"){
+							location.href = "/";
+						}
+						else{
+							alert("失败");
+						}
+					}
+				});
+			});
+		});
+	</script>
+</body>
+</html>

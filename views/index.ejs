@@ -4,14 +4,25 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>详情页</title>
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../stylesheets/main.css">
 	<link rel="stylesheet" href="../stylesheets/detail.css">
+
 	<script src="../javascripts/sea.js"></script>
 	<script>
 		seajs.use('http://localhost:3000/javascripts/main');
 	</script>
 	<script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js">
 	</script>
+	<style>
+		html{
+			overflow-x: hidden;
+		}
+		.table-style{
+			background: black!important;
+			color: white;
+		}
+	</style>
 </head>
 <body id="backTop">
 	<div class="header">
@@ -36,17 +47,17 @@
 						产品
 					</li>
 					<li class="li_tu">
-						新闻
+						<% if (username) { %>
+							<a id="btn_perfect" href="/perfect">完善信息</a>
+						<% } %>
 					</li>
 					<li class="li_tu">
 						<% if (username) { %>
 							<a href="/center">个人中心</a>
-						<% } else { %>
-							飞机
 						<% } %>
 					</li>
 					<li class="li_tu">
-						<a href="/adminl">管理员登陆</a>
+						<a href="/admin">管理员登陆</a>
 					</li>
 					<li class="li_tu">
 						<% if (username) { %>
@@ -54,7 +65,6 @@
 						<% } else { %>
 							<a id="show_LR" href="javascript:;">登陆/注册</a>
 						<% } %>
-						
 					</li>
 					<li class="li_tu">
 						联系我们
@@ -90,7 +100,7 @@
 			<div class="container-r">
 				<p class="ip">iphone7</p>
 				<div class="shoujia">官网售价：￥5388</div>
-				<form action="">
+				<form id="send_form" enctype="multipart/form-data">
 					<div id="color" class="color">
 						<p>颜色：</p>
 						<div>
@@ -114,27 +124,27 @@
 						<p>版本：</p>
 						<div>
 							<label for="">全网通</label>
-							<input type="radio" value="全网通" checked>
+							<input type="radio" name="version" value="全网通" checked>
 						</div>
 					</div>
 					<div class="store">
 						<p>内存：</p>
 						<div>
 							<label for="">32G</label>
-							<input type="radio" value="32G" name="capacity" checked>
+							<input type="radio" value="32G" name="store" checked>
 						</div>
 						<div class="distance">
 							<label for="">128G</label>
-							<input type="radio" value="128G" name="capacity">
+							<input type="radio" value="128G" name="store">
 						</div>
 						<div class="distance">
 							<label for="">256G</label>
-							<input type="radio" value="256G" name="capacity">
+							<input type="radio" value="256G" name="store">
 						</div>
 					</div>
 					<div class="experience">
 						<p>体验时间：</p>
-						<select name="time" id="">
+						<select name="time">
 							<option value="六个月" checked>六个月</option>
 							<option value="七个月">七个月</option>
 							<option value="八个月">八个月</option>
@@ -143,12 +153,32 @@
 					<div class="pay">
 						<p class="pay-1">首付租金：￥369</p>
 						<p class="pay-2">(月租￥249+保障服务费￥120)</p>
-						<input class="send" type="button" value="立即预约">
+						<input id="btn_buy" class="send" type="button" value="立即预约">
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
+	<script>
+		$(document).ready(() => {
+			$("#btn_buy").on("click", () => {
+				var data = new FormData(document.forms[0]);
+				$.ajax({
+					url: "shopping",
+					type: "POST",
+					data: data,
+					processData: false,
+					contentType: false,
+					success: (res, status) => {
+						if(status == "success")
+						{
+							alert(res);
+						}
+					}
+				});
+			});
+		});
+	</script>
 	<!-- 第三大部分 -->
 	<div id="third">
 		<div class="third-a">
@@ -164,25 +194,39 @@
 	</div>
 	<!-- 第四大部分 -->
 	<div id="fourth" style="display: none;">
-		<div class="fourth-a">
-			<div class="fourth-a-l">
-				<div class="fourth-word1">1</div>
-				<div class="fourth-word2">
-					<p class="word-100">初步使用了一天,手机还不错。没有大黄屏也没有电流声炭黑色很漂亮。Home反馈也很好
-						习惯了就好像是实体键的赶脚发热也还好。拍照还真不错,不过没有Plus辣么给力。忠实果粉
-						支持国产。从iphone3GS到7没有断过一部机。</p>
-					</div>
-				</div>
-				<div class="fourth-a-r">
-					<div class="detail-100">
-						<p>网络类型：无需合约版</p>
-						<p>机身颜色：黑色</p>
-						<p>储存容量：32G</p>
-					</div>
-					<div class="name">
-						<p>匿名</p>
-					</div>
-				</div>
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<table class="table table-bordered">
+					<tbody>
+						<div>
+							<% if(bool){ %>
+								<% msg.forEach((item) => { %>
+									<tr class="row table-style">
+										<td class="lead col-md-7">
+											<%= item.comment %>
+										</td>
+										<td class="col-md-5">
+											<div class="lead">
+												网络类型：<%= item.version %>	
+											</div>
+											<div class="lead">
+												机身颜色：<%= item.color %>
+											</div>
+											<div class="lead">
+												储存容量：<%= item.store %>
+											</div>
+											<div class="lead">
+												用户 : <%= item.username %>
+											</div>
+										</td>
+									</tr>
+								<% }) %>
+							<% } else { %>
+								<div>暂无评价</div>
+							<% } %>
+						</div>
+					</tbody>
+				</table> 
 			</div>
 		</div>
 	</div>
@@ -235,9 +279,15 @@
 						success: (res, status) => {
 							if(status == "success")
 							{
-								alert(res);
-								$("#user_name").html(res.split(",")[0]);
-								location.href = "/";
+								if(res == "304"){
+									location.href = "/perfect";
+								}
+								else{
+									var array = res.split(",");
+									if(array.length == 2){
+										location.href = '/';
+									}
+								}
 							}
 							else
 							{
@@ -293,36 +343,6 @@
 			});
 		});
 	</script>
-	<div class="landregister" style="display: none;">
-		<div class="land_header">
-			<img src="../images/register.jpg" alt="">
-			<img class="cancel" src="../images/menu_img2.png" alt="">
-			<div class="l_r_c">
-				完善信息
-			</div>
-		</div>
-		<div class="content_l_r">
-			<div class="input_body">
-				<label for="">姓名:</label>
-				<input name="name" type="text" placeholder="填写姓名">
-			</div>
-			<div class="input_body">
-				<label for="">院校:</label>
-				<input name="college" type="text" placeholder="所属院校">
-			</div>
-			<div class="input_body">
-				<label for="">专业:</label>
-				<input name="profession" type="text" placeholder="所属专业">
-			</div>
-			<div class="input_body">
-				<label for="">寝室:</label>
-				<input name="Bedroom" type="text" placeholder="寝室地址">
-			</div>
-			<div class="submit">
-				<input type="button" value="提交">
-			</div>
-		</div>
-	</div>
 	<div class="backTop"> 
 		<a href="#backTop"><img src="../images/down_img8.png" alt=""></a>
 	</div>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>管理员界面</title>
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<style>
+		body{
+			background: black;
+		}
+		.navbar-footer-style{
+			background: black;
+		}
+	</style>
+</head>
+<body>
+	<div style="margin-top:100px; height: 450px;overflow: auto;" class="container">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<div class="panel panel-primary">
+					<div class="panel-heading">客户的购买信息</div>
+					<div class="panel-body">
+						<% if(bool) { %>
+							<% data.forEach((item) => { %>
+							<table class="table table-bordered">
+									<tr>
+										<th>客户信息</td>
+										<td><%= item.username %></td>
+										<td><%= item.phonenumber %></td>
+										<td><%= item.college %></td>
+										<td><%= item.dormitory %></td>
+										<td><%= item.major %></td>
+									</tr>
+									<% item.shopping.forEach((item) => { %>
+										<tr>
+											<th>购买的商品</th>
+											<td><%= item.product %></td>
+											<td><%= item.version %></td>
+											<td><%= item.store %></td>
+											<td><%= item.color %></td>
+											<td><%= item.time %></td>
+										</tr>
+									<% }) %>
+								</table>
+							<% }) %>
+						<% } else{ %>
+							<div>暂时还没客户购买信息</div>
+						<% } %>
+					</div>
+					<div class="panel-footer clearfix"><a href="/download" class="btn btn-primary pull-right" download>下载</a></div>
+				</div>
+			</div>
+		</div>
+		<div class="navbar navbar-footer-style navbar-default navbar-fixed-bottom">
+			<div class="container">
+				<a href="/">
+					<button class="btn btn-primary">首页</button>
+				</a>
+				<a href="/adminout" class="pull-right">
+					<button class="btn btn-primary">登出</button>
+				</a>
+			</div>
+		</div>
+	</div>
+</body>

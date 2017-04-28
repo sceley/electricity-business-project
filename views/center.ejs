@@ -8,14 +8,55 @@
 	<link rel="stylesheet" href="../stylesheets/center.css">
 	<script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js">
 	</script>
+	<style>
+		.navbar-footer-style{
+			background: black;
+		}
+		.out-select-container{
+			position: relative;
+			height: 135px;
+		}
+		.select-style{
+			width: 135px;
+			height: 135px;
+			border-radius: 50%;
+			position: absolute;
+			left: 0px;
+		}
+		.hidden-style{
+			opacity: 0;
+		}
+		.lease{
+			width: 40%;
+			height: 380px;
+			overflow: hidden;
+			position: relative;
+		}
+		.banner{
+			position: absolute;
+			left: 0px;
+			top: 0px;
+			transition: all 0.5s linear;
+		}
+		ul, li{
+			list-style: none;
+		}
+		.banner-child{
+			float: left;
+		}
+		.narrow{
+			font-size: 4em;
+			position: absolute;
+			margin-top: 22%;
+			cursor: pointer;
+			z-index: 400;
+		}
+		.narrow-right{
+			margin-left: calc(100% - 32px);
+		}
+	</style>
 </head>
 <body id="backTop">
-    <script>
-    	window.onload = function  () {
-    		var userPhoto = document.getElementById("userPhoto");
-    		userPhoto.style.height = userPhoto.offsetWidth + "px";
-    	};
-    </script>
     <script>
     	$(document).ready(() => {
     		$("#upload").on("change", function  () {
@@ -27,11 +68,11 @@
     			XHR.open("POST", "/upload", true);
     			XHR.send(data);
     			XHR.onload = function  () {
-    				if(this.status == 200){
-    					console.log('成功');
+    				if(this.status == 304){
+    					location.href = location.href;
     				}
     				else{
-    					console.log('失败');
+    					console.log('失败: ' + this.response);
     				}
     			};
     		});
@@ -39,8 +80,10 @@
     </script>
 	<div class="header">
 		<div class="header_row1">
-			<img id="userPhoto" class="userPhoto" src="../client_img/<%=  imgsrc %>.png" alt="">
-			<input id="upload" type="file">
+			<div class="out-select-container">
+				<img class="select-style" src="../cimages/<%= imgsrc %>">
+				<input id="upload" class="select-style hidden-style" type="file">
+			</div>
 			<div class="userName"> <%= username %> </div>
 		</div>
 		<div class="header_row2">
@@ -53,14 +96,107 @@
 	</div>
 	<div id="leaseProduct" class="leaseProduct">租赁产品</div>
 	<!-- 租赁部分 -->
-	<div class="lease">
-		<ul>
-			<li class="lease_row">产品：<span>iphone7</span></li>
-			<li class="lease_row">规格：<span>国行/亮黑/128G</span></li>
-			<li class="lease_row">租金：<span>249元/月</span></li>
-			<li class="lease_row">意外保障：<span>198元</span></li>
-		</ul>
-	</div>
+	<script>
+		$(document).ready(() => {
+			var lease = $("#lease");
+			var width = lease[0].offsetWidth;
+			$(".lease_row").css({
+				width: width
+			});
+			$(".banner-child").css({
+				width: width
+			});
+			var amountWidth = width * $('.banner-child').length;
+			$("#banner").css({
+				width: amountWidth
+			});
+			$(document).on("keydown", (e) => {
+					var banner = $("#banner");
+					if(e.keyCode == 37){//往左
+						if(banner[0].offsetLeft <= -amountWidth + width){
+							banner.css({
+								left: 0
+							});
+						}
+						else{
+							left = banner[0].offsetLeft - width;
+							banner.css({
+								left: left
+							});
+						}
+					}
+					else if(e.keyCode == 39){//往右
+						if(banner[0].offsetLeft == 0){
+							banner.css({
+								left:  -amountWidth + width
+							});
+						}
+						else{
+							left = banner[0].offsetLeft + width;
+							banner.css({
+								left: left
+							});
+						}
+						
+					}
+			});
+			var banner = $("#banner");
+			$("#narrow-left").on("click", () => {
+				if(banner[0].offsetLeft <= -amountWidth + width){
+					banner.css({
+						left: 0
+					});
+				}
+				else{
+					left = banner[0].offsetLeft - width;
+					banner.css({
+						left: left
+					});
+				}
+			});
+			$("#narrow-right").on("click", () => {
+				if(banner[0].offsetLeft == 0){
+					banner.css({
+						left:  -amountWidth + width
+					});
+				}
+				else{
+					left = banner[0].offsetLeft + width;
+					banner.css({
+						left: left
+					});
+				}
+			});
+		});
+	</script>
+	<% if(bool) { %>
+		<div id="lease" class="lease">
+			<div id="narrow-left" class="narrow narrow-left">&lt;</div>
+			<div id="banner" class="banner">
+			<% things.forEach((thing) => { %>
+					<ul class="banner-child">
+						<li class="lease_row">产品：<span><%= thing.product %></span></li>
+						<li class="lease_row">购机时长：<span><%= thing.time %></span></li>
+						<li class="lease_row">版本：<span><%= thing.version %></span></li>
+						<li class="lease_row">颜色：<span><%= thing.color %></span></li>
+						<li class="lease_row">内存：<span><%= thing.store %></span></li>
+					</ul>
+			<% }) %>
+			</div>
+			<div id="narrow-right" class="narrow narrow-right">&gt;</div>
+		</div>
+	<% } else { %>
+	
+		<div class="lease">
+			<ul>
+				<li class="lease_row">产品：<span>无</span></li>
+				<li class="lease_row">购机时长：<span>无</span></li>
+				<li class="lease_row">版本：<span>无</span></li>
+				<li class="lease_row">颜色：<span>无</span></li>
+				<li class="lease_row">内存：<span>无</span></li>
+			</ul>
+		</div>
+	<% } %>
 	<div id="bill" class="bill">我的账单</div>
 	<!-- 订单部分 -->
 	<div class="order">
@@ -92,13 +228,37 @@
 	</div>
 	<div id="comment" class="comment">评论</div>
 	<div class="comment_content">
-		<textarea name="" id="">请输入商品评论......</textarea>
-		<input type="submit" value="提交">
+		<textarea id="comment_content"></textarea>
+		<input id="send_comment" type="button" value="提交">
 	</div>
+	<script>
+		$(document).ready(() => {
+			$("#send_comment").on("click", () => {
+				var data = {
+					comment: $("#comment_content").val()
+				};
+				console.log(data);
+				$.ajax({
+					url: "/comment",
+					type: "POST",
+					data: JSON.stringify(data),
+					contentType: "application/json",
+					success: (res, status) => {
+						if(status == "success"){
+							alert(res);
+						}
+						else{
+							console.log('失败');
+						}
+					}
+				});
+			});
+		});
+	</script>
 	<div class="backTop"> 
 		<a href="#backTop"><img src="../images/down_img8.png" alt=""></a>
 	</div>
-	<div class="navbar navbar-default navbar-fixed-bottom">
+	<div class="navbar navbar-footer-style navbar-default navbar-fixed-bottom">
 		<div class="container">
 			<a href="/" class="btn btn-primary">首页</a>
 			<a href="/signout" class="btn btn-primary pull-right">登出</a>
