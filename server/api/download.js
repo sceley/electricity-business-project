@@ -22,27 +22,27 @@ const sync = (shopping, data) => {
 	return new Promise((resolve, reject) => {
 		var array = [];
 		var msg = [];
-		var readUser = async () => {
-			for(let i = 0; i < data.length; i++){
-				let keys = Object.keys(data[i]._doc);
-				let values = [];
-				for(let j = 0; j < keys.length; j++){
-					values[j] = data[i]._doc[keys[j]];
-				}
-				let query = {
-					username: data[i].username
-				};
-				array[i] = await findShop(query, shopping);
-				keys.push("shopping");
-				values.push(array[i]);
-				let news = new Create(keys, values);
-				delete news._id;
-				delete news.__v;
-				msg.push(news);
-			}
+		// var readUser = async () => {
+		// 	for(let i = 0; i < data.length; i++){
+		// 		let keys = Object.keys(data[i]._doc);
+		// 		let values = [];
+		// 		for(let j = 0; j < keys.length; j++){
+		// 			values[j] = data[i]._doc[keys[j]];
+		// 		}
+		// 		let query = {
+		// 			username: data[i].username
+		// 		};
+		// 		array[i] = await findShop(query, shopping);
+		// 		keys.push("shopping");
+		// 		values.push(array[i]);
+		// 		let news = new Create(keys, values);
+		// 		delete news._id;
+		// 		delete news.__v;
+		// 		msg.push(news);
+		// 	}
 			resolve(msg);
-		};
-		readUser();
+		// };
+		// readUser();
 	});
 };
 var file = (data) => {

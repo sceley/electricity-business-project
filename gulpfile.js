@@ -1,9 +1,9 @@
 const gulp = require("gulp");
-const sass = require("gulp-sass");
-const babel = require("gulp-babel");
-const uglify = require("gulp-uglify");
-const browser = require("browser-sync");
-const autoprefixer = require("gulp-autoprefixer");
+// const sass = require("gulp-sass");
+// const babel = require("gulp-babel");
+// const uglify = require("gulp-uglify");
+// const browser = require("browser-sync");
+// const autoprefixer = require("gulp-autoprefixer");
 const port = require("./server/app");
 const array = ['source/css/*.css', 'source/js/*.js']
 gulp.task('js', () => {
@@ -14,7 +14,6 @@ gulp.task('js', () => {
 });
 gulp.task("css", () => {
 	gulp.src('source/css/*.css')
-    .pipe(autoprefixer())
     .pipe(gulp.dest("client/css"));
 });
 // gulp.task("watch", () => {

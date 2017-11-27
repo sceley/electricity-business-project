@@ -29,12 +29,10 @@
 .img-container-children img{
 	position: absolute;
 	width: 100%;
-	-webkit-transform: rotateY(90deg);
-	        transform: rotateY(90deg);
+	transform: rotateY(90deg);
 }
 .img-container-children img:first-child{
-	-webkit-transform: rotateY(0deg);
-	        transform: rotateY(0deg);
+	transform: rotateY(0deg);
 }
 #prev{ 
 	left: 10px;
